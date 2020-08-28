@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Card, Header, Form, Input, Icon } from "semantic-ui-react";
 
-let endpoint = "http://localhost:8080";
+// let endpoint = "http://localhost:8080";
+let endpoint = process.env.REACT_APP_BACKEND_URL
 
 class ToDoList extends Component {
   constructor(props) {
@@ -30,7 +31,7 @@ class ToDoList extends Component {
     if (task) {
       axios
         .post(
-          endpoint + "/api/task",
+          endpoint + "/tasks",
           {
             task
           },
@@ -51,7 +52,7 @@ class ToDoList extends Component {
   };
 
   getTask = () => {
-    axios.get(endpoint + "/api/task").then(res => {
+    axios.get(endpoint + "/tasks").then(res => {
       console.log(res);
       if (res.data) {
         this.setState({
@@ -103,7 +104,7 @@ class ToDoList extends Component {
 
   updateTask = id => {
     axios
-      .put(endpoint + "/api/task/" + id, {
+      .put(endpoint + "/tasks/" + id, {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded"
         }
@@ -116,7 +117,7 @@ class ToDoList extends Component {
 
   undoTask = id => {
     axios
-      .put(endpoint + "/api/undoTask/" + id, {
+      .put(endpoint + "/tasks/" + id + "/undo", {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded"
         }
@@ -129,7 +130,7 @@ class ToDoList extends Component {
 
   deleteTask = id => {
     axios
-      .delete(endpoint + "/api/deleteTask/" + id, {
+      .delete(endpoint + "/tasks/" + id, {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded"
         }
