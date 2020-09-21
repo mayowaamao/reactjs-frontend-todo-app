@@ -4,7 +4,7 @@ import { Card, Header, Form, Input, Icon } from "semantic-ui-react";
 
 // let endpoint = "http://localhost:8080";
 let endpoint = process.env.REACT_APP_BACKEND_URL
-REACT_APP_BACKEND_URL = https://sokoto-goronyo-5f67adb3c53e1983cef2b26f.simplifyd.app/
+//REACT_APP_BACKEND_URL = https://sokoto-goronyo-5f67adb3c53e1983cef2b26f.simplifyd.app/
 
 class ToDoList extends Component {
   constructor(props) {
